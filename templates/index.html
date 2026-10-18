@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Branch Feed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="top">
+    <p class="brand">Branch Feed</p>
+    <nav class="chips" aria-label="Choose your branch">
+      {% for b in branches %}
+      <button class="chip" type="button" data-branch="{{ b }}" aria-pressed="false">{{ b }}</button>
+      {% endfor %}
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1 id="branchTitle">CSE</h1>
+    <p class="tagline">News, hackathons and new tech for your branch.</p>
+  </section>
+
+  <p id="status" role="status" aria-live="polite"></p>
+
+  <main class="columns">
+    <section class="col col-news" aria-labelledby="h-news">
+      <h2 id="h-news">News</h2>
+      <ul id="news" class="list"></ul>
+    </section>
+    <section class="col col-hack" aria-labelledby="h-hack">
+      <h2 id="h-hack">Hackathons</h2>
+      <ul id="hackathons" class="list"></ul>
+    </section>
+    <section class="col col-tech" aria-labelledby="h-tech">
+      <h2 id="h-tech">New tech</h2>
+      <ul id="tech" class="list"></ul>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
